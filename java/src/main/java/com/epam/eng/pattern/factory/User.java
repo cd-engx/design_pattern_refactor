@@ -26,3 +26,5 @@ public class User {
         user.notifyUser("This is a notification message");
     }
 }
+
+// todo: consider to create a factory that can create different User by role type.

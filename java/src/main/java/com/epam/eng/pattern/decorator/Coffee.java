@@ -30,3 +30,5 @@ public class Coffee {
 
 }
 
+// todo: consider to decorator Coffee with sugar, with milk.
+

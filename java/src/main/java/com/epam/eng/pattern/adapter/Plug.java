@@ -16,6 +16,8 @@ public class Plug {
 
 
     public static void main(String[] args) {
-        /* TODO: Use the AmericanPlug in a European socket */
+        /* TODO: Use the AmericanPlug in a European socket
+         consider create an EuropeanPlugAdapter to adapt AmericanPlug so that can insertIntoEuropeanSocket
+        */
     }
 }

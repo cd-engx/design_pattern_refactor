@@ -56,3 +56,6 @@ class VicePresident {
         }
     }
 }
+
+
+// todo: consider to build a chain of objects. in this situation, Manager's supervisor is Director, Director's supervisor is VicePresident

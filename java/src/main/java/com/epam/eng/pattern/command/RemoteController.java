@@ -13,3 +13,5 @@ class LightBulb {
         System.out.println("LightBulb: Bulb turned off...");
     }
 }
+
+// todo: consider to build a RemoteController to execute TurnOnLightCommand or TurnOffLightCommand to controller the LightBulb.

@@ -86,3 +86,5 @@ public class SmartHome {
         home.turnOffAc();
     }
 }
+
+// todo: consider to turn On all devices by a single method. consider to turn Off all devices by a single method.

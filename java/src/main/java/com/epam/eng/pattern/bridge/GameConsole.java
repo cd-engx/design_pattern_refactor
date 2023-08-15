@@ -39,3 +39,5 @@ class Gamepad {
         // press gamepad button
     }
 }
+
+// todo: consider abstract GameController, so that Joystick and Gamepad can extend them.

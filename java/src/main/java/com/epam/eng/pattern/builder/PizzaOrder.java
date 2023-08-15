@@ -32,3 +32,6 @@ public class PizzaOrder {
         this.mushrooms = mushrooms;
     }
 }
+
+// todo: consider create a PizzaOrderBuilder so that can build PizzaOrder step by step.
+

@@ -16,3 +16,5 @@ public class PhoneNumberMasker {
         return firstPart + "-" + maskedSecondPart + "-" + thirdPart;
     }
 }
+
+// todo: consider to create an Interpreter can interpret expression ###-XXX-###, transfer phone number from 123-456-7890 to 123-XXX-7890

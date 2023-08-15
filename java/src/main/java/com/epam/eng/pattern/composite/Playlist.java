@@ -43,3 +43,5 @@ class Song {
         System.out.println("Playing song '" + name + "' by " + artist + " (" + duration + " seconds)");
     }
 }
+
+// todo: consider to use Playlist play multiple songs at once.
