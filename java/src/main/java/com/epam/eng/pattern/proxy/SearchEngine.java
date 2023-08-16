@@ -10,3 +10,5 @@ class GoogleSearchEngine implements SearchEngine {
         return "Google search results for query: " + query;
     }
 }
+
+// todo: consider to create a Search Engine Proxy class, which is responsible to call GoogleSearchEngine

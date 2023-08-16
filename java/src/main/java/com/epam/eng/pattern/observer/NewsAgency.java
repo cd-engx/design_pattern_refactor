@@ -37,3 +37,5 @@ public class NewsAgency {
         }
     }
 }
+
+// todo: consider to Register Subscriber into NewsAgency as an observer to receive news.

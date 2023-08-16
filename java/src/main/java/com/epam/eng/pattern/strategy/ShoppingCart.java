@@ -64,3 +64,5 @@ public class ShoppingCart {
     }
 
 }
+
+// todo: consider to abstract payment

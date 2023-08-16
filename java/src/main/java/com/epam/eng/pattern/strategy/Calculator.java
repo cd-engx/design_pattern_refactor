@@ -23,3 +23,5 @@ public class Calculator {
         System.out.println("3 / 4 = " + calculate(3, 4, "divide"));
     }
 }
+
+// todo: consider to abstract algorithm

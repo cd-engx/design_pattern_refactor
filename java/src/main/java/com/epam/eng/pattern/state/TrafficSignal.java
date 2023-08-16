@@ -45,3 +45,4 @@ public class TrafficSignal {
         }
     }
 }
+// todo: consider to abstract states Red/Green/Yellow, they can change TrafficSignal context state

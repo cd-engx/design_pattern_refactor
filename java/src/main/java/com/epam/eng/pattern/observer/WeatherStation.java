@@ -41,3 +41,5 @@ public class WeatherStation {
     }
 
 }
+
+// todo: consider to Register Subscriber into WeatherStation as an observer to receive weather.

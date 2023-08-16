@@ -72,3 +72,5 @@ class OutlookEmail {
 
     // other methods...
 }
+
+// todo: consider to abstract EmailClient template, so that Gmail and Outlook can implement it
