@@ -18,6 +18,6 @@ public class ChinesePlug implements IChinesePlug{
 
     @Override
     public void supplyPower() {
-        System.out.println("Supplying power with " + voltage + "V" + frequency + "Hz");
+        System.out.printf("Chinese plug start supplying electricity of %d volts and %d Hz%n ", voltage, frequency);
     }
 }
