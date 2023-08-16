@@ -1,9 +1,5 @@
 package com.epam.eng.pattern.command;
 
-public class RemoteController {
-
-}
-
 class LightBulb {
     public void turnOn() {
         System.out.println("LightBulb: Bulb turned on...");
@@ -14,4 +10,8 @@ class LightBulb {
     }
 }
 
-// todo: consider to build a RemoteController to execute TurnOnLightCommand or TurnOffLightCommand to controller the LightBulb.
+public class RemoteController {
+
+}
+
+// todo: consider to build a RemoteController to execute TurnOnLightCommand or TurnOffLightCommand to control the LightBulb.
