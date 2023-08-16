@@ -1,5 +1,8 @@
 package com.epam.eng.pattern.adapter;
 
+import com.epam.eng.pattern.adapter.euro.EuroPlug;
+import com.epam.eng.pattern.adapter.euro.IEuroPlug;
+
 public class EuropeanSocket {
 
     public void plugIn(IEuroPlug euroPlug) {

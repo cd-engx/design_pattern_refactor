@@ -1,4 +1,4 @@
-package com.epam.eng.pattern.adapter;
+package com.epam.eng.pattern.adapter.euro;
 
 public class EuroPlug implements IEuroPlug {
 
