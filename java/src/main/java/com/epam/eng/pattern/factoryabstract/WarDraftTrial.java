@@ -131,9 +131,9 @@ class OrcWarrior extends Warrior {
     }
 }
 
-class TrollMage extends Mage {
+class OrcMage extends Mage {
 
-    public TrollMage(String skill) {
+    public OrcMage(String skill) {
         super(skill, 100);
         agility = 5;
         attack = 12;
@@ -142,14 +142,14 @@ class TrollMage extends Mage {
 
     @Override
     public void attack() {
-        System.out.printf("TrollMage cast a %s%n!", skill);
+        System.out.printf("OrcMage cast a %s%n!", skill);
         super.attack();
     }
 }
 
-class Wyvern extends FlyingUnits {
+class OrcFlyingSoldier extends FlyingUnits {
 
-        public Wyvern() {
+        public OrcFlyingSoldier() {
             super();
             agility = 6;
             attack = 12;
@@ -158,15 +158,15 @@ class Wyvern extends FlyingUnits {
 
         @Override
         public void attack() {
-            System.out.println("Wyvern throws a bomb!");
+            System.out.println("OrcFlyingSoldier throws a bomb!");
             super.attack();
         }
 }
 
 
-class Cyrocopter extends FlyingUnits {
+class HumanCyrocopter extends FlyingUnits {
 
-    public Cyrocopter() {
+    public HumanCyrocopter() {
         super();
         agility = 9;
         attack = 9;
@@ -175,14 +175,14 @@ class Cyrocopter extends FlyingUnits {
 
     @Override
     public void attack() {
-        System.out.println("Cyrocopter throws a bomb!");
+        System.out.println("HumanCyrocopter throws a bomb!");
         super.attack();
     }
 }
 
-class GnomeMage extends Mage {
+class HumanMage extends Mage {
 
-    public GnomeMage(String skill) {
+    public HumanMage(String skill) {
         super(skill, 110);
         agility = 5;
         attack = 12;
@@ -191,7 +191,7 @@ class GnomeMage extends Mage {
 
     @Override
     public void attack() {
-        System.out.printf("GnomeMage cast a %s%n!", skill);
+        System.out.printf("HumanMage cast a %s%n!", skill);
         super.attack();
     }
 }
@@ -224,23 +224,23 @@ public class WarDraftTrial {
 
     public void orcTrial() {
         OrcWarrior warrior = new OrcWarrior("Axe");
-        TrollMage mage = new TrollMage("Fireball");
-        Wyvern wyvern = new Wyvern();
+        OrcMage mage = new OrcMage("Fireball");
+        OrcFlyingSoldier orcFlyingSoldier = new OrcFlyingSoldier();
         ArrayList<Unit> orcUnits = new ArrayList<>();
         orcUnits.add(warrior);
         orcUnits.add(mage);
-        orcUnits.add(wyvern);
+        orcUnits.add(orcFlyingSoldier);
         tryAllUnits(orcUnits);
     }
 
     public void humanTrial() {
         HumanWarrior warrior = new HumanWarrior("Sword");
-        GnomeMage mage = new GnomeMage("IceArrow");
-        Cyrocopter cyrocopter = new Cyrocopter();
+        HumanMage mage = new HumanMage("IceArrow");
+        HumanCyrocopter humanCyrocopter = new HumanCyrocopter();
         ArrayList<Unit> humanUnits = new ArrayList<>();
         humanUnits.add(warrior);
         humanUnits.add(mage);
-        humanUnits.add(cyrocopter);
+        humanUnits.add(humanCyrocopter);
         tryAllUnits(humanUnits);
     }
 
@@ -248,6 +248,8 @@ public class WarDraftTrial {
         WarDraftTrial warDraftTrial = new WarDraftTrial();
         warDraftTrial.orcTrial();
         warDraftTrial.humanTrial();
-        // TODO: Use the abstract factory pattern to refactor the code above. Only one trial method is enough.
+        /* TODO: Use the abstract factory pattern to refactor the humanTrial and orcTrial.
+            The orc factory should create orc units, the human factory should create human units.
+         */
     }
 }
