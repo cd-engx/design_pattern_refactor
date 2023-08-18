@@ -1,30 +1,4 @@
-class NewsAgency {
-    private news: string[] = [];
-    private name: string;
-
-    constructor(name: string) {
-        this.name = name;
-    }
-
-    public addNews(news: string): void {
-        this.news.push(news);
-    }
-
-    public removeNews(news: string): void {
-        const index: number = this.news.indexOf(news);
-        if (index !== -1) {
-            this.news.splice(index, 1);
-        }
-    }
-
-    public notifySubscribers(): void {
-        for (const news of this.news) {
-            console.log(this.name + " is broadcasting: " + news);
-        }
-    }
-}
-
-class Subscriber {
+export class Subscriber {
     private name: string;
 
     constructor(name: string) {
@@ -36,9 +10,44 @@ class Subscriber {
     }
 }
 
-var newsAgency = new NewsAgency("Colson");
-newsAgency.addNews("Headline 1");
-newsAgency.addNews("Headline 2");
-newsAgency.notifySubscribers();
+export class NewsAgency {
+    private name: string;
+    private subscribes: Subscriber[] = [];
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    subscribe(observer: Subscriber){
+        this.subscribes.push(observer);
+    }
+
+    unsubscribe(observer: Subscriber) {
+        const index: number = this.subscribes.indexOf(observer);
+        if (index !== -1) {
+            this.subscribes.splice(index, 1);
+        }
+    }
+
+    public notifySubscribers(news: string): void {
+        for (const subscribe of this.subscribes) {
+            subscribe.receiveNews(news)
+        }
+    }
+
+}
+
+const newsAgency = new NewsAgency("BBC")
+const Subscriber1 = new Subscriber("DaJing")
+const Subscriber2 = new Subscriber("Krauser")
+const Subscriber3 = new Subscriber("Nick")
+
+newsAgency.subscribe(Subscriber1)
+newsAgency.subscribe(Subscriber2)
+newsAgency.subscribe(Subscriber3)
+
+newsAgency.notifySubscribers("we win!!!")
 
 
+
+// todo: consider to Register Subscriber into NewsAgency as an observer to receive news.

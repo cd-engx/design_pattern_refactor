@@ -1,5 +1,9 @@
-class Sorter {
-    public static bubbleSort(arr: number[]): void {
+interface SortMethod {
+    sort(arr: number[]): number[]
+}
+
+class BubbleSort implements SortMethod {
+    sort(arr: number[]) {
         const n = arr.length;
         for (let i = 0; i < n - 1; i++) {
             for (let j = 0; j < n - i - 1; j++) {
@@ -10,9 +14,12 @@ class Sorter {
                 }
             }
         }
+        return arr;
     }
+}
 
-    public static selectionSort(arr: number[]): void {
+class SelectionSort implements SortMethod {
+    sort(arr: number[]) {
         const n = arr.length;
         for (let i = 0; i < n - 1; i++) {
             let minIndex = i;
@@ -25,9 +32,12 @@ class Sorter {
             arr[minIndex] = arr[i];
             arr[i] = temp;
         }
+        return arr;
     }
+}
 
-    public static insertionSort(arr: number[]): void {
+class InsertionSort implements SortMethod {
+    sort(arr: number[]) {
         for (let i = 1; i < arr.length; i++) {
             let key = arr[i];
             let j = i - 1;
@@ -37,34 +47,38 @@ class Sorter {
             }
             arr[j + 1] = key;
         }
+        return arr;
+    }
+}
+
+class Sorter{
+    sortMethod: SortMethod;
+    arr: number [];
+    constructor(sortMethod: SortMethod, arr: number[]) {
+        this.sortMethod = sortMethod;
+        this.arr = arr;
     }
 
-    public static main(): void {
-        let arr: number[] = [64, 34, 25, 12, 22, 11, 90];
-
-        console.log("Original array:");
-        for (let num of arr) {
-            console.log(num + " ");
-        }
-
-        console.log("\nSorting using bubble sort:");
-        Sorter.bubbleSort(arr);
-        for (let num of arr) {
-            console.log(num + " ");
-        }
-
-        console.log("\nSorting using selection sort:");
-        Sorter.selectionSort(arr);
-        for (let num of arr) {
-            console.log(num + " ");
-        }
-
-        console.log("\nSorting using insertion sort:");
-        Sorter.insertionSort(arr);
-        for (let num of arr) {
+    displayArr () {
+        for (let num of  this.sortMethod.sort(this.arr)) {
             console.log(num + " ");
         }
     }
 }
 
-Sorter.main();
+let arr: number[] = [64, 34, 25, 12, 22, 11, 90];
+
+const bubbleSort = new BubbleSort();
+const selectionSort = new SelectionSort();
+const insertionSort = new InsertionSort();
+
+const sorter1 = new Sorter(bubbleSort, arr);
+sorter1.displayArr()
+console.log("============================================================")
+
+const sorter2 = new Sorter(bubbleSort, arr);
+sorter2.displayArr()
+console.log("============================================================")
+
+const sorter3 = new Sorter(bubbleSort, arr);
+sorter3.displayArr()

@@ -1,24 +1,52 @@
-class User {
-    private name: string;
-    private email: string;
-    private role: string;
 
-    constructor(name: string, email: string, role: string) {
+interface IUser {
+    name: string;
+    email: string;
+    notify(): void;
+}
+
+class Admin implements IUser {
+    name: string;
+    email: string;
+
+    constructor(name: string, email: string){
         this.name = name;
         this.email = email;
-        this.role = role;
+    }
+   
+    notify() {
+        console.log("this is message from" + this.name)
+    }
+}
+
+class User implements IUser {
+    name: string;
+    email: string;
+
+    constructor(name: string, email: string){
+        this.name = name;
+        this.email = email;
     }
 
-    public notifyUser(message: string): void {
-        if (this.role === "admin") {
-            console.log("Sending message to admin: " + message);
-        } else if (this.role === "user") {
-            console.log("Sending message to user: " + message);
+    notify() {
+        console.log("this is message from" + this.name)
+    }
+}
+
+class RoleFactory {
+    static createRole(role: string) {
+        if (role === "admin") {
+            return new Admin("DaJing", "Dajin@epam.com")
+        } else if (role === "user") {
+            return new User("Krauser", "Krauser@epam.com")
         } else {
-            console.log("Invalid role type");
+            throw new Error("This kind of role doesn't exist!")
         }
     }
 }
 
-var user: User = new User("John Doe", "john.doe@example.com", "admin");
-user.notifyUser("This is a notification message");
+const amdin = RoleFactory.createRole("amdin");
+const user = RoleFactory.createRole("uesr");
+
+amdin.notify();
+user.notify()

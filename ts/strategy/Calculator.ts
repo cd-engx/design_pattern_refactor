@@ -1,21 +1,49 @@
-class Calculator {
-    static calculate(num1: number, num2: number, operation: string): number {
-        if (operation === "add") {
-            return num1 + num2;
-        } else if (operation === "subtract") {
-            return num1 - num2;
-        } else if (operation === "multiply") {
-            return num1 * num2;
-        } else if (operation === "divide") {
-            return num1 / num2;
-        } else {
-            throw new Error("Unknown operation: " + operation);
-        }
-    }
-
+export interface ICalculateStrategy {
+    calculate(num1: number, num2: number): number;
 }
 
-console.log("3 + 4 = " + Calculator.calculate(3, 4, "add"));
-console.log("3 - 4 = " + Calculator.calculate(3, 4, "subtract"));
-console.log("3 * 4 = " + Calculator.calculate(3, 4, "multiply"));
-console.log("3 / 4 = " + Calculator.calculate(3, 4, "divide"));
+export class Add implements ICalculateStrategy {
+    calculate(num1: number, num2: number) {
+        return num1 + num2;
+    }
+}
+
+export class Subtract implements ICalculateStrategy {
+    calculate(num1: number, num2: number) {
+        return num1 - num2;
+    }
+}
+
+export class Multiply implements ICalculateStrategy {
+    calculate(num1: number, num2: number) {
+        return num1 * num2;
+    }
+}
+
+export class Divide implements ICalculateStrategy {
+    calculate(num1: number, num2: number) {
+        return num1 / num2;
+    }
+}
+
+export interface IStrategyConstructor {
+    new (): ICalculateStrategy
+}
+
+export class CalculateStrategy {
+    request(calculateStrategy: IStrategyConstructor) {
+        return new calculateStrategy()
+    }
+}
+
+const CALCULATE = new CalculateStrategy();
+
+const add = CALCULATE.request(Add);
+const substract = CALCULATE.request(Subtract);
+const multiply = CALCULATE.request(Multiply);
+const divide = CALCULATE.request(Divide);
+
+console.log("3 + 4 = " + add.calculate(3, 4));
+console.log("3 - 4 = " + substract.calculate(3, 4));
+console.log("3 * 4 = " + multiply.calculate(3, 4));
+console.log("3 / 4 = " + divide.calculate(3, 4));

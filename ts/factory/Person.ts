@@ -38,8 +38,15 @@ class Person {
     }
 }
 
+
 const john = new Person(25, "John", true);
 john.eat("Pizza");
 john.sleep();
 john.work();
 john.play("Chess");
+
+/*
+todo: consider to abstract Eat/Sleep/Work/Play Activities to interface
+ create a factory that can create different Activities for person to do.
+ */
+

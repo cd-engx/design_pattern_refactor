@@ -1,7 +1,26 @@
-  class ShoppingCart {
+ interface Payment {
+    pay(total: number): void;
+ }
+ 
+ class CreditCardPay implements Payment {
+    pay(total: number) {
+        console.log("Payment made with credit card: $" + total);
+    }
+ }
+
+ class PaypalPay implements Payment {
+    pay(total: number) {
+        console.log("Payment made with PayPal: $" + total);
+    }
+ }
+
+
+ class ShoppingCart {
+    payment: Payment;
     private items: Item[] = [];
 
-    constructor() {
+    constructor(payment: Payment) {
+        this.payment = payment;
         this.items = [];
     }
 
@@ -21,15 +40,9 @@
         return total;
     }
 
-    public pay(paymentMethod: string): void {
+    public pay(): void {
         const total = this.calculateTotal();
-        if (paymentMethod === "credit_card") {
-            console.log("Payment made with credit card: $" + total);
-        } else if (paymentMethod === "paypal") {
-            console.log("Payment made with PayPal: $" + total);
-        } else {
-            throw new Error("Unknown payment method: " + paymentMethod);
-        }
+        this.payment.pay(total);
     }
 
 }
@@ -59,3 +72,27 @@ class Item {
         this.price = price;
     }
 }
+
+const creditCardPay = new CreditCardPay();
+const shoppingCartPayByCreditCard = new ShoppingCart(creditCardPay);
+
+const paypalPay = new PaypalPay();
+const shoppingCartPayBypalPay = new ShoppingCart(paypalPay);
+
+const milkItem = new Item("milk", 300);
+const riceItem = new Item("rice", 9000);
+const porkItem = new Item("Pock", 400);
+
+
+shoppingCartPayByCreditCard.addItem(milkItem);
+shoppingCartPayByCreditCard.addItem(riceItem);
+shoppingCartPayByCreditCard.addItem(porkItem);
+shoppingCartPayByCreditCard.pay()
+
+
+shoppingCartPayBypalPay.addItem(milkItem);
+shoppingCartPayBypalPay.addItem(riceItem);
+shoppingCartPayBypalPay.addItem(porkItem);
+shoppingCartPayBypalPay.pay();
+
+
