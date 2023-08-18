@@ -5,6 +5,8 @@ interface IDrink {
     getDescription(): string
 }
 
+
+
 class Milk implements IDrink {
     size: string;
     cost: number;
@@ -28,7 +30,7 @@ class Sugar implements IDrink {
     size: string;
     cost: number;
 
-    constructor(size: string,  cost: number) {
+    constructor(size: string,  cost: number, ) {
         this.size = size;
         this.cost = cost;
     }
@@ -43,37 +45,33 @@ class Sugar implements IDrink {
 
 }
 
-class MakeCoffee implements IDrink{
-    ingredient: IDrink;
+class Coffee implements IDrink{
     size: string;
     cost: number;
+    protected ingredient: IDrink;
 
-    constructor(ingredient:  IDrink, size: string,  cost: number) {
-        this.ingredient = ingredient;
+    constructor(size: string, cost: number, ingredient: IDrink) {
         this.size = size;
         this.cost = cost;
+        this.ingredient = ingredient;
     }
 
     getDescription(): string {
-        return "this coffe is with " + this.ingredient.getDescription();
+        return this.ingredient.getDescription() + "this coffe is with " ;
     }
 
     getCost(): number {
-        return this.cost + this.ingredient.cost;
+        return this.cost + this.ingredient.getCost() ;
     }
 
 }
+ 
+ 
+const milk = new Milk("big", 33);
+const sugar = new Sugar("big", 33);
 
-const milk = new Milk("big", 12);
-const sugar = new Sugar("middle", 20);
-
-const coffeWithMilk = new MakeCoffee(milk, "big", 90);
-const coffeWithSugar = new MakeCoffee(sugar, "small", 120);
-
-coffeWithMilk.getCost();
-coffeWithMilk.getDescription();
-
-coffeWithSugar.getCost();
-coffeWithSugar.getDescription();
+const coffeeWithMilk = new Coffee("small", 34, milk);
+const coffeeWithSugar = new Coffee("large", 55, sugar);
+ 
 
 // todo: consider to decorator Coffee with sugar, with milk.

@@ -31,19 +31,14 @@ export interface IStrategyConstructor {
 }
 
 export class CalculateStrategy {
-    request(calculateStrategy: IStrategyConstructor) {
-        return new calculateStrategy()
+    calculate(num1: number, num2: number, calculateStrategy: IStrategyConstructor) {
+        new calculateStrategy().calculate(num1, num2);
     }
 }
 
-const CALCULATE = new CalculateStrategy();
+const calculateStrategy = new CalculateStrategy();
 
-const add = CALCULATE.request(Add);
-const substract = CALCULATE.request(Subtract);
-const multiply = CALCULATE.request(Multiply);
-const divide = CALCULATE.request(Divide);
-
-console.log("3 + 4 = " + add.calculate(3, 4));
-console.log("3 - 4 = " + substract.calculate(3, 4));
-console.log("3 * 4 = " + multiply.calculate(3, 4));
-console.log("3 / 4 = " + divide.calculate(3, 4));
+console.log("3 + 4 = " + calculateStrategy.calculate(3,4, Add));
+console.log("3 - 4 = " + calculateStrategy.calculate(3, 4, Subtract));
+console.log("3 * 4 = " + calculateStrategy.calculate(3, 4, Multiply));
+console.log("3 / 4 = " + calculateStrategy.calculate(3, 4, Divide));

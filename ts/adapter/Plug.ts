@@ -17,20 +17,20 @@ class EuropeanPlug implements EuropeanSocket{
   }
 }
 
-class EuropeanAdapter implements AmericanSocket {
-  europeanSocket: EuropeanSocket;
+class EuropeanAdapter implements EuropeanSocket {
+  americanSocket: AmericanSocket;
 
   constructor() {
-    this.europeanSocket = new EuropeanPlug();
+    this.americanSocket = new AmericanPlug();
   }
 
-  insertIntoAmericanSocket() {
-    this.europeanSocket.insertIntoEuropeanSocket();
+  insertIntoEuropeanSocket() {
+    this.americanSocket.insertIntoAmericanSocket();
   }
 }
 
 const europeanAdapter = new EuropeanAdapter();
-europeanAdapter.insertIntoAmericanSocket();
+europeanAdapter.insertIntoEuropeanSocket();
 
 
 /* TODO: Use the AmericanPlug in a European socket */
