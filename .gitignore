@@ -10,3 +10,6 @@
 #Maven
 target
 **.versionsBackup
+
+#node_modules
+node_modules
