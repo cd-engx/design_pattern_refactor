@@ -1,42 +1,40 @@
+interface Controller {
+  moveUp(): void;
+}
+
+class Joystick implements Controller {
+  public moveUp(): void {
+    console.log("Joystick moved up");
+  }
+}
+
+class GamePad implements Controller {
+  public moveUp(): void {
+    console.log("GamePad button 'Up' pressed");
+  }
+}
+
 class GameConsole {
-    private joystick: Joystick = new Joystick();
-    private gamepad: GamePad = new GamePad();
-    private currentController: string;
+  private controller: Controller;
 
-    constructor() {
-        this.currentController = "Joystick";
-    }
+  constructor(controller: Controller) {
+    this.controller = controller;
+  }
 
-    public setController(controller: string): void {
-        if (controller === "Joystick") {
-            this.currentController = "Joystick";
-        } else if (controller === "Gamepad") {
-            this.currentController = "Gamepad";
-        } else {
-            throw new Error("Invalid controller");
-        }
-    }
+  public setController(newController: Controller): void {
+    this.controller = newController;
+  }
 
-    public moveUp(): void {
-        if (this.currentController === "Joystick") {
-            this.joystick.moveUp();
-        } else if (this.currentController === "Gamepad") {
-            this.gamepad.pressButton("Up");
-        }
-    }
+  public moveUp(): void {
+    this.controller.moveUp();
+  }
 }
 
-class Joystick {
-    public moveUp(): void {
-        // move joystick up
-    }
-}
+const joystick = new Joystick();
+const gamepad = new GamePad();
 
-class GamePad {
-    public pressButton(button: string): void {
-        // press gamepad button
-    }
-}
+const gameConsole = new GameConsole(joystick); // Start with joystick
+gameConsole.moveUp(); // Outputs: Joystick moved up
 
-var gameConsole = new GameConsole();
-gameConsole.moveUp();
+gameConsole.setController(gamepad); // Switch to gamepad
+gameConsole.moveUp(); // Outputs: GamePad button 'Up' pressed
