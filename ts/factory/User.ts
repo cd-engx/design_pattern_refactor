@@ -1,24 +1,56 @@
+enum UserRole {
+    ADMIN = "admin",
+    USER = "user"
+}
+
 class User {
     private name: string;
     private email: string;
-    private role: string;
+    private role: UserRole;
 
-    constructor(name: string, email: string, role: string) {
+    constructor(name: string, email: string, role: UserRole) {
         this.name = name;
         this.email = email;
         this.role = role;
     }
 
-    public notifyUser(message: string): void {
-        if (this.role === "admin") {
-            console.log("Sending message to admin: " + message);
-        } else if (this.role === "user") {
-            console.log("Sending message to user: " + message);
-        } else {
-            console.log("Invalid role type");
+    public getRole(): UserRole {
+        return this.role;
+    }
+
+    public getEmail(): string {
+        return this.email;
+    }
+}
+
+class Notifier {
+    public static notifyUser(user: User, message: string): void {
+        switch (user.getRole()) {
+            case UserRole.ADMIN:
+                console.log("Sending message to admin: " + message);
+                break;
+            case UserRole.USER:
+                console.log("Sending message to user: " + message);
+                break;
+            default:
+                console.log("Invalid role type");
         }
     }
 }
 
-var user: User = new User("John Doe", "john.doe@example.com", "admin");
-user.notifyUser("This is a notification message");
+class UserFactory {
+    static createAdmin(name: string, email: string): User {
+        return new User(name, email, UserRole.ADMIN);
+    }
+
+    static createUser(name: string, email: string): User {
+        return new User(name, email, UserRole.USER);
+    }
+}
+
+// Usage
+const adminUser = UserFactory.createAdmin("John Doe", "john.doe@example.com");
+Notifier.notifyUser(adminUser, "This is a notification message");
+
+const regularUser = UserFactory.createUser("Jane Doe", "jane.doe@example.com");
+Notifier.notifyUser(regularUser, "Hello Jane!");
