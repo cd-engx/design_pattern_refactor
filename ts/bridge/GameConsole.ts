@@ -40,3 +40,5 @@ class GamePad {
 
 var gameConsole = new GameConsole();
 gameConsole.moveUp();
+
+// todo: consider abstract GameController, so that Joystick and Gamepad can extend them.
