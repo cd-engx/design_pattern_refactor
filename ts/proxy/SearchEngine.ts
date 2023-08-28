@@ -11,3 +11,5 @@ class GoogleSearchEngine implements SearchEngine {
 
 var searchEngine: GoogleSearchEngine = new GoogleSearchEngine();
 var result = searchEngine.search("NEWS");
+
+// todo: consider to create a Search Engine Proxy class, which is responsible to call GoogleSearchEngine

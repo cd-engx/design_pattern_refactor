@@ -84,3 +84,5 @@ class Light {
   };
   
   smartHome();
+
+  // todo: consider to turn On all devices by a single method. consider to turn Off all devices by a single method.

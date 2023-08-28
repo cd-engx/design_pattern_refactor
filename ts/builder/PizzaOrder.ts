@@ -33,3 +33,5 @@ class PizzaOrder {
 
 var order = new PizzaOrder();
 console.log(order);
+
+// todo: consider create a PizzaOrderBuilder so that can build PizzaOrder step by step.

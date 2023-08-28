@@ -26,3 +26,6 @@ class Coffee {
         return this.cost;
     }
 }
+
+// todo: consider to decorator Coffee with sugar, with milk.
+

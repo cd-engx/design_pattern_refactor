@@ -42,3 +42,4 @@ newsAgency.addNews("Headline 2");
 newsAgency.notifySubscribers();
 
 
+// todo: consider to Register Subscriber into NewsAgency as an observer to receive news.

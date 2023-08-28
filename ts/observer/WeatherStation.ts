@@ -37,3 +37,5 @@ class WeatherStation {
         return 1;
     }
 }
+
+// todo: consider to Register Subscriber into WeatherStation as an observer to receive weather.

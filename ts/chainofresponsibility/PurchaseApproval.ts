@@ -50,3 +50,6 @@ class VicePresident {
 var request = new PurchaseRequest(8000);
 var manager = new Manager();
 manager.approve(request);
+
+// todo: consider to build a chain of objects. in this situation, Manager's supervisor is Director, Director's supervisor is VicePresident
+

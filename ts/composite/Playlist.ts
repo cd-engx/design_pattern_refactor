@@ -45,3 +45,6 @@
 var playList = new Playlist();
 //playList.play();
 
+
+// todo: consider to use Playlist play multiple songs at once.
+

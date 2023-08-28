@@ -47,3 +47,5 @@ class TrafficSignal {
 
 var trafficSignal = new TrafficSignal();
 trafficSignal.runSignal();
+
+// todo: consider to abstract states Red/Green/Yellow, they can change TrafficSignal context state

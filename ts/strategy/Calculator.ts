@@ -19,3 +19,6 @@ console.log("3 + 4 = " + Calculator.calculate(3, 4, "add"));
 console.log("3 - 4 = " + Calculator.calculate(3, 4, "subtract"));
 console.log("3 * 4 = " + Calculator.calculate(3, 4, "multiply"));
 console.log("3 / 4 = " + Calculator.calculate(3, 4, "divide"));
+
+// todo: consider to abstract algorithm
+

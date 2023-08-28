@@ -59,3 +59,5 @@ class Item {
         this.price = price;
     }
 }
+
+// todo: consider to abstract payment
