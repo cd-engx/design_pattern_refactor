@@ -1,7 +1,35 @@
 package com.epam.eng.pattern.composite;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Playlist {
-    
+    private String name;
+    private List<Song> songs;
+
+    public Playlist(String name) {
+        this.name = name;
+        this.songs = new ArrayList<>();
+    }
+
+    public void addSong(Song song) {
+        songs.add(song);
+    }
+
+    public void removeSong(Song song) {
+        songs.remove(song);
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void play() {
+        System.out.println("Playing playlist '" + name + "'");
+        for (Song song : songs) {
+            song.play();
+        }
+    }
 }
 
 class Song {
@@ -44,4 +72,4 @@ class Song {
     }
 }
 
-// todo: consider to use Playlist play multiple songs at once.
+// todo: consider to create a hierarchy of playlists and songs, treating them all as uniform objects. PlayList can be tree structures, it might contains list of songs or other play list.

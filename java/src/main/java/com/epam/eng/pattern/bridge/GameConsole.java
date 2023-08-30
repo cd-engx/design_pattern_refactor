@@ -40,4 +40,4 @@ class Gamepad {
     }
 }
 
-// todo: consider abstract GameController, so that Joystick and Gamepad can extend them.
+// todo: consider abstract GameController, so that Joystick and Gamepad can extend them. then build a bride between GameController and GameConsole. Finally, we can switch to a different controller simply just pass it.

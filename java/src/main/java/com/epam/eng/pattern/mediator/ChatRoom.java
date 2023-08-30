@@ -1,8 +1,24 @@
 package com.epam.eng.pattern.mediator;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
+class User {
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public void sendMessage(String message, ChatRoom chatRoom) {
+        chatRoom.sendMessage(message, this);
+    }
+
+    public void receiveMessage(String message) {
+        System.out.println(name + " received message: " + message);
+    }
+}
+
 
 public class ChatRoom {
     private List<User> users;
@@ -21,22 +37,6 @@ public class ChatRoom {
                 user.receiveMessage(message);
             }
         }
-    }
-}
-
-class User {
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    public void sendMessage(String message, ChatRoom chatRoom) {
-        chatRoom.sendMessage(message, this);
-    }
-
-    public void receiveMessage(String message) {
-        System.out.println(name + " received message: " + message);
     }
 }
 
