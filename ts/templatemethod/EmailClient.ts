@@ -1,72 +1,79 @@
-class EmailClient {
-    private gmailEmail: GmailEmail;
-    private outlookEmail: OutlookEmail;
+abstract class EmailClient {
+  public sendEmail(recipient: string, subject: string, body: string): void {
+    this.connectToServer();
+    this.authenticateUser();
+    this.specifyRecipients(recipient);
+    this.specifySubject(subject);
+    this.specifyBody(body);
+    this.send();
+    this.disconnectFromServer();
+  }
 
-    public sendEmail(recipient: string, subject: string, body: string): void {
-        this.connectToServer();
-        this.authenticateUser();
-        this.specifyRecipients(recipient);
-        this.specifySubject(subject);
-        this.specifyBody(body);
-        this.send();
-        this.disconnectFromServer();
-    }
-
-    private connectToServer(): void {
-        // Connect to email server
-        if (this.gmailEmail != null) {
-            this.gmailEmail.connectToServer();
-        } else if (this.outlookEmail != null) {
-            this.outlookEmail.connectToServer();
-        }
-    }
-
-    private authenticateUser(): void {
-        // Authenticate user
-    }
-
-    private specifyRecipients(recipient: string): void {
-        // Specify email recipient(s)
-    }
-
-    private specifySubject(subject: string): void {
-        // Specify email subject
-    }
-
-    private specifyBody(body: string): void {
-        // Specify email body
-    }
-
-    private send(): void {
-        // Send email
-        if (this.gmailEmail != null) {
-            this.gmailEmail.send();
-        } else if (this.outlookEmail != null) {
-            this.outlookEmail.send();
-        }
-    }
-
-    private disconnectFromServer(): void {
-        // Disconnect from email server
-    }
+  protected abstract connectToServer(): void;
+  protected abstract authenticateUser(): void;
+  protected abstract specifyRecipients(recipient: string): void;
+  protected abstract specifySubject(subject: string): void;
+  protected abstract specifyBody(body: string): void;
+  protected abstract send(): void;
+  protected abstract disconnectFromServer(): void;
 }
 
-class GmailEmail {
-    public connectToServer(): void {
-    }
+class GmailEmailClient extends EmailClient {
+  protected connectToServer(): void {
+    // Connect to Gmail server
+  }
 
-    public send(): void {
-    }
+  protected authenticateUser(): void {
+    // Authenticate user with Gmail
+  }
 
-    // other methods...
+  protected specifyRecipients(recipient: string): void {
+    // Specify email recipient(s) for Gmail
+  }
+
+  protected specifySubject(subject: string): void {
+    // Specify email subject for Gmail
+  }
+
+  protected specifyBody(body: string): void {
+    // Specify email body for Gmail
+  }
+
+  protected send(): void {
+    // Send email through Gmail
+  }
+
+  protected disconnectFromServer(): void {
+    // Disconnect from Gmail server
+  }
 }
 
-class OutlookEmail {
-    public connectToServer(): void {
-    }
+class OutlookEmailClient extends EmailClient {
+  protected connectToServer(): void {
+    // Connect to Outlook server
+  }
 
-    public send(): void {
-    }
+  protected authenticateUser(): void {
+    // Authenticate user with Outlook
+  }
 
-    // other methods...
+  protected specifyRecipients(recipient: string): void {
+    // Specify email recipient(s) for Outlook
+  }
+
+  protected specifySubject(subject: string): void {
+    // Specify email subject for Outlook
+  }
+
+  protected specifyBody(body: string): void {
+    // Specify email body for Outlook
+  }
+
+  protected send(): void {
+    // Send email through Outlook
+  }
+
+  protected disconnectFromServer(): void {
+    // Disconnect from Outlook server
+  }
 }
